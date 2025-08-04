@@ -1,0 +1,6 @@
+{
+  "command": "npm start",
+  "serverUrl": "http://localhost:3000/react-portfolio-template",
+  "authenticateProxy": false,
+  "commitMode": "commits"
+}
