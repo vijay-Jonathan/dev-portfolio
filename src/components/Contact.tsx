@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
 import '../assets/styles/Contact.scss';
-// import emailjs from '@emailjs/browser';
+import emailjs from '@emailjs/browser';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import SendIcon from '@mui/icons-material/Send';
@@ -26,7 +26,26 @@ function Contact() {
     setMessageError(message === '');
 
     /* Uncomment below if you want to enable the emailJS */
+   if (name !== '' && email !== '' && message !== '') {
+      var templateParams = {
+        name: name,
+        email: email,
+        message: message
+      };
 
+      console.log(templateParams);
+      emailjs.send('service_5nh8pp8', 'template_9zs90dn', templateParams, 'gGjpvFK58kHr8pyOq').then(
+        (response) => {
+          console.log('SUCCESS!', response.status, response.text);
+        },
+        (error) => {
+          console.log('FAILED...', error);
+        },
+      );
+      setName('');
+      setEmail('');
+      setMessage('');
+    }
     // if (name !== '' && email !== '' && message !== '') {
     //   var templateParams = {
     //     name: name,
