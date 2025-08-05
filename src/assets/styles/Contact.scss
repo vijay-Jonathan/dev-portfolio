@@ -18,14 +18,15 @@
     color: white;
   }
 
-  fieldset {
-    background-color: white;
-  }
+  // fieldset {
+  //   background-color: white;
+  // }
 }
 
 label {
   font-size: 1.2rem;
   font-family: 'DomaineDispNar-Medium', sans-serif;
+
 }
 
 .form-flex {
@@ -45,4 +46,12 @@ form {
 .body-form {
   width: 100% !important;
   margin-bottom: 15px !important;
+}
+
+.contact-form .MuiOutlinedInput-root {
+  background-color: white !important;
+}
+
+.contact-form fieldset {
+  background-color: transparent !important; // Make sure fieldset is transparent
 }
