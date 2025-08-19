@@ -11,6 +11,7 @@ import {
 import Certifications from "./components/Certifications";
 import FadeIn from './components/FadeIn';
 import './index.scss';
+import ChatLauncher from "./components/ChatLauncher";
 
 function App() {
     const [mode, setMode] = useState<string>('dark');
@@ -39,6 +40,7 @@ function App() {
             <Contact/>
         </FadeIn>
         <Footer />
+      <ChatLauncher />
     </div>
     );
 }
