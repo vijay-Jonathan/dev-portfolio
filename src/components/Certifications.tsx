@@ -16,7 +16,12 @@ function Certifications() {
                 <FontAwesomeIcon icon={faCertificate} />
               </div>
               <div className="cert-content">
-                <h3 className="cert-title">{c.title}</h3>
+                <div className="cert-title-row">
+                  <h3 className="cert-title">{c.title}</h3>
+                  {c.badgeImg && (
+                    <img className="cert-badge" src={c.badgeImg} alt={c.badgeAlt || 'badge'} />
+                  )}
+                </div>
                 {c.issuer && <p className="cert-meta">{c.issuer}</p>}
                 {c.date && <p className="cert-meta">{c.date}</p>}
               </div>

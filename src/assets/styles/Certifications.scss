@@ -45,15 +45,29 @@
     min-width: 0;
   }
 
+  .cert-title-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
   .cert-title {
     margin: 0;
-    font-size: 1.05rem;
+    font-size: 1.2rem;
+    color: rgb(39, 40, 34);
+    font-weight: 600;
+  }
+
+  .cert-badge {
+    height: 22px;
   }
 
   .cert-meta {
     margin: 0.125rem 0 0;
-    opacity: 0.8;
-    font-size: 0.9rem;
+    opacity: 0.85;
+    font-size: 0.92rem;
+    color: rgb(39, 40, 34);
   }
 
   .cert-link {
