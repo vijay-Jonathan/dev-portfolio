@@ -3,6 +3,9 @@ import '../assets/styles/Certifications.scss';
 import { certifications } from '../data/certifications';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCertificate, faUpRightFromSquare } from '@fortawesome/free-solid-svg-icons';
+import awsLogo from '../assets/icons/aws.svg';
+import databricksLogo from '../assets/icons/databricks.svg';
+import courseraLogo from '../assets/icons/coursera.svg';
 
 function Certifications() {
   return (
@@ -13,11 +16,22 @@ function Certifications() {
           {certifications.map((c) => (
             <div className="cert-card" key={c.id}>
               <div className="cert-icon">
-                {c.iconUrl ? (
-                  <img className="cert-icon-img" src={c.iconUrl} alt={c.iconAlt || 'logo'} />
-                ) : (
-                  <FontAwesomeIcon icon={faCertificate} />
-                )}
+                {(() => {
+                  const issuer = (c.issuer || '').toLowerCase();
+                  const img =
+                    issuer.includes('amazon') || issuer.includes('aws')
+                      ? awsLogo
+                      : issuer.includes('databricks')
+                      ? databricksLogo
+                      : issuer.includes('coursera')
+                      ? courseraLogo
+                      : undefined;
+                  return img ? (
+                    <img className="cert-icon-img" src={img} alt={c.iconAlt || 'logo'} />
+                  ) : (
+                    <FontAwesomeIcon icon={faCertificate} />
+                  );
+                })()}
               </div>
               <div className="cert-content">
                 <div className="cert-title-row">
