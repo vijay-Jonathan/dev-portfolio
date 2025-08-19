@@ -13,7 +13,11 @@ function Certifications() {
           {certifications.map((c) => (
             <div className="cert-card" key={c.id}>
               <div className="cert-icon">
-                <FontAwesomeIcon icon={faCertificate} />
+                {c.iconUrl ? (
+                  <img className="cert-icon-img" src={c.iconUrl} alt={c.iconAlt || 'logo'} />
+                ) : (
+                  <FontAwesomeIcon icon={faCertificate} />
+                )}
               </div>
               <div className="cert-content">
                 <div className="cert-title-row">
