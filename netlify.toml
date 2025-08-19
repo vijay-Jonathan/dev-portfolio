@@ -5,6 +5,8 @@
 [functions]
   node_bundler = "esbuild"
   included_files = ["public/data/knowledge.md"]
+  # Ensure environment variables are available in Netlify Functions
+  environment = { OPENAI_API_KEY = "${OPENAI_API_KEY}" }
 
 [[headers]]
   for = "/.netlify/functions/*"
