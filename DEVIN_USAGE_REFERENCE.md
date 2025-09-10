@@ -172,3 +172,95 @@ output:
   - tests/test_dateFormatter.js
 stop_after: "PR Created"
 
+```
+
+##Prompts
+
+``` 
+task: "Create Angular Application: [REPLACE_APP_TITLE]"
+meta:
+  author: "[YOUR_NAME_OR_TEAM]"
+  branch: "devin/[APP_TITLE_LOWERCASE]-skeleton"
+  pr_title: "chore: add skeleton Angular app [REPLACE_APP_TITLE]"
+  idempotent: true
+  acu_limit: 15
+deliverables:
+  - path: "apps/[REPLACE_APP_TITLE]/README.md"
+    type: "markdown"
+  - path: "apps/[REPLACE_APP_TITLE]/angular.json"
+    type: "config"
+  - path: "apps/[REPLACE_APP_TITLE]/src/app/app.module.ts"
+    type: "code"
+  - path: "devin-notebooks/[REPLACE_APP_TITLE]-playbooks.yaml"
+    type: "playbook"
+instructions:
+  overview: |
+    Create a skeleton Angular application with best practices, including:
+      - Core folder structure
+      - Placeholder modules/components/services
+      - Unit test skeletons
+      - ACU-optimized playbooks for bugfixes, MCP integration, and Dockerization
+      - Observability placeholders (Prometheus/Grafana)
+      - CI/CD triggers for GitLab and Jenkins
+  content_requirements:
+    - Generate a modular folder structure (apps/[APP_TITLE]/src/app)
+    - Provide skeleton files:
+        - app.module.ts
+        - main.ts
+        - environment.ts
+    - Include skeleton unit tests (Jasmine/Karma or Jest)
+    - Include placeholder Dockerfile + docker-compose.yml
+    - Include placeholder MCP service integration
+    - Include ACU-efficient playbook templates with stop conditions
+    - Include observability and CI/CD placeholders
+  editing_guidance: |
+    - Replace `[REPLACE_APP_TITLE]` with actual app name
+    - Developers can add components/modules/services later
+    - Leave placeholders intact for Devin playbooks
+  acceptance_criteria:
+    - Skeleton Angular app is created
+    - Playbooks exist for bugfix, ACU saving, Dockerization, MCP
+    - Observability metrics and CI/CD templates are in place
+```
+###Devin AI — Master Skeleton Prompt
+```
+task: "[REPLACE_WITH_TASK_TITLE]"
+meta:
+  author: "[YOUR_NAME_OR_TEAM]"
+  branch: "devin/[BRANCH_NAME]"
+  pr_title: "[PR_TITLE]"
+  idempotent: true
+  acu_limit: [ACU_NUMBER]
+deliverables:
+  - path: "docs/[DOC_FILE_NAME].md"
+    type: "markdown"
+  - path: "devin-notebooks/[NOTEBOOK_NAME].yaml"
+    type: "playbook"
+  - path: "docs/[OPTIONAL_EXTRA].md"
+    type: "markdown"
+instructions:
+  overview: |
+    [SHORT_DESCRIPTION_OF_GOAL]
+
+    Example:
+    Create a multi-page advanced playbook for Angular bugfixes, ACU-saving strategies,
+    Dockerization, and MCP integrations. Add observability (Prometheus/Grafana),
+    CI/CD examples, and governance notes.
+  content_requirements:
+    - Use clear sections with code blocks.
+    - Each playbook must have: purpose, inputs, outputs, examples, ACU estimate, stop_after condition.
+    - Provide placeholders that developers can edit.
+    - Include best practices for ACU saving.
+    - Provide CI/CD snippets for GitLab and Jenkins.
+    - Add observability (Prometheus metric + Grafana JSON).
+  editing_guidance: |
+    - Limit edits to new files under `docs/` or `devin-notebooks/`.
+    - Do not touch production files.
+    - Stop after PR creation.
+  acceptance_criteria:
+    - PR includes docs, notebooks, and examples.
+    - Each playbook has placeholders to edit.
+    - ACU usage is estimated for each playbook.
+```
+ 
+
