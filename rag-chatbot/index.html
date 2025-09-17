@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Resume Assistant</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- PDF.js for PDF parsing -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+    
+    <!-- Mammoth.js for DOCX parsing -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.6.0/mammoth.browser.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1><i class="fas fa-robot"></i> Personal Resume Assistant</h1>
+            <p>Upload your resume and I'll become your personal AI assistant, ready to answer questions about YOUR background!</p>
+        </header>
+
+        <!-- Resume Upload Section -->
+        <div class="upload-section" id="uploadSection">
+            <div class="upload-container">
+                <div class="upload-area" id="uploadArea">
+                    <div class="upload-icon">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                    </div>
+                    <h3>Upload Your Resume</h3>
+                    <p>Drop your PDF or DOCX resume here, or click to browse</p>
+                    <input type="file" id="resumeInput" accept=".pdf,.docx,.doc" hidden>
+                    <button class="upload-button" onclick="document.getElementById('resumeInput').click()">
+                        <i class="fas fa-file-upload"></i> Choose File
+                    </button>
+                </div>
+                <div class="upload-status" id="uploadStatus" style="display: none;">
+                    <div class="status-content">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Resume loaded successfully!</span>
+                        <button class="change-resume-btn" onclick="changeResume()">
+                            <i class="fas fa-sync-alt"></i> Change Resume
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="chatbot-container">
+            <div class="chat-messages" id="chatMessages">
+                <div class="message bot-message">
+                    <div class="message-avatar">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <div class="message-content">
+                        <p>Hello! I'm your personal resume assistant. Once you upload your resume, I'll be able to:</p>
+                        <ul>
+                            <li>Answer questions about <strong>your</strong> education and work experience</li>
+                            <li>Discuss <strong>your</strong> projects and skills in detail</li>
+                            <li>Analyze job descriptions against <strong>your</strong> profile</li>
+                            <li>Explain why <strong>you're</strong> a great fit for specific roles</li>
+                        </ul>
+                        <p><strong>Please upload your resume (PDF or DOCX) to get started!</strong></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="chat-input-container">
+                <div class="input-wrapper">
+                    <textarea 
+                        id="messageInput" 
+                        placeholder="Ask me about my background or paste a job description..."
+                        rows="1"
+                    ></textarea>
+                    <button id="sendButton" class="send-button">
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </div>
+                <div class="input-actions">
+                    <button id="clearButton" class="action-button">
+                        <i class="fas fa-trash"></i> Clear Chat
+                    </button>
+                    <button id="exportButton" class="action-button">
+                        <i class="fas fa-download"></i> Export Chat
+                    </button>
+                    <button id="settingsButton" class="action-button">
+                        <i class="fas fa-cog"></i> AI Settings
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- API Configuration Modal -->
+        <div class="api-modal" id="apiModal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3><i class="fas fa-key"></i> OpenRouter API Configuration</h3>
+                    <button class="close-modal" id="closeModal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <p>To enable AI-powered responses, you need an OpenRouter API key:</p>
+                    <ol>
+                        <li>Go to <a href="https://openrouter.ai" target="_blank">OpenRouter.ai</a></li>
+                        <li>Sign up for a free account (no credit card required)</li>
+                        <li>Get your API key from the dashboard</li>
+                        <li>Paste it below (it will be stored locally)</li>
+                    </ol>
+                    
+                    <div class="info-box">
+                        <i class="fas fa-info-circle"></i>
+                        <strong>Free Models Available:</strong> The system will automatically find working free models like Phi-3, Gemma-2, or Llama-3.1.
+                    </div>
+                    
+                    <div class="api-input-group">
+                        <label for="apiKeyInput">OpenRouter API Key:</label>
+                        <input type="password" id="apiKeyInput" placeholder="sk-or-v1-..." />
+                        <button id="toggleApiKey" class="toggle-btn">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
+                    
+                    <div class="api-actions">
+                        <button id="testApiKey" class="test-btn">
+                            <i class="fas fa-flask"></i> Test Connection
+                        </button>
+                        <button id="saveApiKey" class="save-btn">
+                            <i class="fas fa-save"></i> Save & Continue
+                        </button>
+                    </div>
+                    
+                    <div class="api-status" id="apiStatus" style="display: none;"></div>
+                    
+                    <div class="skip-section">
+                        <button id="skipApi" class="skip-btn">
+                            <i class="fas fa-forward"></i> Skip (Use Basic Mode)
+                        </button>
+                        <p class="skip-note">You can still use the chatbot with basic RAG responses without the API</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="status-indicator" id="statusIndicator">
+            <span class="status-dot"></span>
+            <span class="status-text">Ready</span>
+        </div>
+    </div>
+
+    <!-- RAG System -->
+    <script src="rag-system/resume-parser.js"></script>
+    <script src="rag-system/rag-engine.js"></script>
+    <script src="rag-system/openrouter-api.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
