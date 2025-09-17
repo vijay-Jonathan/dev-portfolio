@@ -11,11 +11,11 @@ function Certifications() {
   const getProviderIcon = (issuer: string) => {
     const issuerLower = issuer.toLowerCase();
     if (issuerLower.includes('amazon') || issuerLower.includes('aws')) {
-      return awsLogo;
+      return 'https://images.credly.com/images/00634f82-b07f-4bbd-a6bb-53de397fc3a6/image.png'; // AWS Cloud Practitioner
     } else if (issuerLower.includes('databricks')) {
-      return databricksLogo;
+      return 'https://www.databricks.com/wp-content/uploads/2021/10/db-nav-logo.svg'; // Databricks logo
     } else if (issuerLower.includes('coursera')) {
-      return courseraLogo;
+      return 'https://upload.wikimedia.org/wikipedia/commons/9/97/Coursera-Logo_600x600.svg';
     }
     return null;
   };
@@ -35,15 +35,7 @@ function Certifications() {
   return (
     <div id="certifications">
       <div className="items-container">
-        <div className="section-header">
-          <h1>
-            <FontAwesomeIcon icon={faAward} className="section-icon" />
-            Professional Certifications
-          </h1>
-          <p className="section-subtitle">
-            Industry-recognized certifications demonstrating expertise in cloud technologies and DevOps practices
-          </p>
-        </div>
+        <h1>Certifications</h1>
         
         <div className="cert-grid">
           {certifications.map((cert) => {
@@ -52,8 +44,8 @@ function Certifications() {
             
             return (
               <div className="cert-card" key={cert.id}>
-                <div className="cert-header">
-                  <div className="cert-icon" style={{ borderColor: providerColor }}>
+                <div className="cert-main">
+                  <div className="cert-icon">
                     {providerIcon ? (
                       <img 
                         className="cert-icon-img" 
@@ -65,45 +57,25 @@ function Certifications() {
                     )}
                   </div>
                   
+                  <div className="cert-info">
+                    <h3 className="cert-title">{cert.title}</h3>
+                    <div className="cert-meta">
+                      <span className="cert-issuer">{cert.issuer}</span>
+                      {cert.date && <span className="cert-date">{cert.date}</span>}
+                    </div>
+                  </div>
+                  
                   {cert.url && (
                     <a
-                      className="cert-link"
+                      className="cert-verify-btn"
                       href={cert.url}
                       target="_blank"
                       rel="noreferrer"
-                      aria-label={`View certificate for ${cert.title}`}
-                      style={{ color: providerColor }}
+                      aria-label={`Verify certificate for ${cert.title}`}
+                      title="Verify Credential"
                     >
                       <FontAwesomeIcon icon={faUpRightFromSquare} />
                     </a>
-                  )}
-                </div>
-                
-                <div className="cert-content">
-                  <h3 className="cert-title">{cert.title}</h3>
-                  
-                  {cert.issuer && (
-                    <div className="cert-issuer">
-                      <FontAwesomeIcon icon={faCertificate} className="meta-icon" />
-                      <span>{cert.issuer}</span>
-                    </div>
-                  )}
-                  
-                  {cert.date && (
-                    <div className="cert-date">
-                      <FontAwesomeIcon icon={faCalendarAlt} className="meta-icon" />
-                      <span>{cert.date}</span>
-                    </div>
-                  )}
-                  
-                  {cert.badgeImg && (
-                    <div className="cert-badge-container">
-                      <img 
-                        className="cert-badge" 
-                        src={cert.badgeImg} 
-                        alt={cert.badgeAlt || 'Certification badge'} 
-                      />
-                    </div>
                   )}
                 </div>
               </div>

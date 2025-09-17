@@ -17,9 +17,9 @@ export const certifications: Certification[] = [
     issuer: 'Amazon Web Services',
     date: 'March 2024',
     badgeImg: 'https://img.shields.io/badge/AWS-DevOps_Professional-232F3E?logo=amazonaws&logoColor=white',
-    badgeAlt: 'AWS badge',
-    iconUrl: 'https://cdn.simpleicons.org/amazonaws/232F3E',
-    iconAlt: 'AWS logo',
+    badgeAlt: 'AWS DevOps Professional badge',
+    iconUrl: 'https://images.credly.com/images/bd31ef42-d460-493e-8503-39592aaf0458/image.png',
+    iconAlt: 'AWS DevOps Professional logo',
     url: 'https://aws.amazon.com/certification/certified-devops-engineer-professional/'
   },
   {
@@ -28,9 +28,9 @@ export const certifications: Certification[] = [
     issuer: 'Amazon Web Services',
     date: 'January 2024',
     badgeImg: 'https://img.shields.io/badge/AWS-Cloud_Practitioner-232F3E?logo=amazonaws&logoColor=white',
-    badgeAlt: 'AWS badge',
-    iconUrl: 'https://cdn.simpleicons.org/amazonaws/232F3E',
-    iconAlt: 'AWS logo',
+    badgeAlt: 'AWS Cloud Practitioner badge',
+    iconUrl: 'https://images.credly.com/images/00634f82-b07f-4bbd-a6bb-53de397fc3a6/image.png',
+    iconAlt: 'AWS Cloud Practitioner logo',
     url: 'https://aws.amazon.com/certification/certified-cloud-practitioner/'
   },
   {
@@ -39,9 +39,9 @@ export const certifications: Certification[] = [
     issuer: 'Databricks',
     date: 'February 2024',
     badgeImg: 'https://img.shields.io/badge/Databricks-Data_Engineer-FF3621?logo=databricks&logoColor=white',
-    badgeAlt: 'Databricks badge',
-    iconUrl: 'https://cdn.simpleicons.org/databricks/FF3621',
-    iconAlt: 'Databricks logo',
+    badgeAlt: 'Databricks Data Engineer badge',
+    iconUrl: 'https://images.credly.com/images/d06ca3f4-c3d4-4948-9c42-67f8d8d5b1a1/image.png',
+    iconAlt: 'Databricks Data Engineer logo',
     url: 'https://www.databricks.com/learn/certification/data-engineer'
   },
   {
@@ -50,8 +50,8 @@ export const certifications: Certification[] = [
     issuer: 'Coursera',
     date: 'December 2023',
     badgeImg: 'https://img.shields.io/badge/Coursera-DevOps_Essentials-0056D2?logo=coursera&logoColor=white',
-    badgeAlt: 'Coursera badge',
-    iconUrl: 'https://cdn.simpleicons.org/coursera/0056D2',
+    badgeAlt: 'Coursera DevOps badge',
+    iconUrl: 'https://upload.wikimedia.org/wikipedia/commons/9/97/Coursera-Logo_600x600.svg',
     iconAlt: 'Coursera logo',
     url: 'https://www.coursera.org/learn/devops-essentials'
   },
@@ -61,9 +61,9 @@ export const certifications: Certification[] = [
     issuer: 'Amazon Web Services',
     date: 'November 2023',
     badgeImg: 'https://img.shields.io/badge/AWS-Developer_Associate-232F3E?logo=amazonaws&logoColor=white',
-    badgeAlt: 'AWS badge',
-    iconUrl: 'https://cdn.simpleicons.org/amazonaws/232F3E',
-    iconAlt: 'AWS logo',
+    badgeAlt: 'AWS Developer Associate badge',
+    iconUrl: 'https://images.credly.com/images/b9feab85-1a43-4f6c-99a5-631b88d5461b/image.png',
+    iconAlt: 'AWS Developer Associate logo',
     url: 'https://aws.amazon.com/certification/certified-developer-associate/'
   }
 ];
