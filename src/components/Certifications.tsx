@@ -2,10 +2,7 @@ import React from 'react';
 import '../assets/styles/Certifications.scss';
 import { certifications } from '../data/certifications';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCertificate, faUpRightFromSquare, faCalendarAlt, faAward } from '@fortawesome/free-solid-svg-icons';
-import awsLogo from '../assets/icons/aws.svg';
-import databricksLogo from '../assets/icons/databricks.svg';
-import courseraLogo from '../assets/icons/coursera.svg';
+import { faCertificate, faUpRightFromSquare } from '@fortawesome/free-solid-svg-icons';
 
 function Certifications() {
   const getProviderIcon = (issuer: string) => {
