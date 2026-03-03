@@ -24,6 +24,7 @@ function Timeline() {
   return (
     <div id="history">
       <div className="items-container">
+        <span className="section-label">Experience</span>
         <h1>Career History</h1>
         <VerticalTimeline>
           {timelineData.map((item) => (
@@ -39,7 +40,7 @@ function Timeline() {
               contentArrowStyle={{ borderRight: '7px solid white' }}
               date={item.date}
               iconStyle={{ 
-                background: item.type === 'education' ? '#6A1B9A' : '#5000ca', 
+                background: item.type === 'education' ? '#6d28d9' : '#7c3aed', 
                 color: '#fff' 
               }}
               icon={item.type === 'education' ? <SchoolIcon /> : <WorkIcon />}

@@ -47,14 +47,14 @@ function Navigation({parentToChild, modeChange}: any) {
   }, []);
 
   const scrollToSection = (section: string) => {
-    console.log(section)
-    const expertiseElement = document.getElementById(section);
-    if (expertiseElement) {
-      expertiseElement.scrollIntoView({ behavior: 'smooth' });
-      console.log('Scrolling to:', expertiseElement);  // Debugging: Ensure the element is found
-    } else {
-      console.error('Element with id "expertise" not found');  // Debugging: Log error if element is not found
+    const element = document.getElementById(section);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
     }
+  };
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const drawer = (
@@ -87,17 +87,54 @@ function Navigation({parentToChild, modeChange}: any) {
           >
             <MenuIcon />
           </IconButton>
-          {mode === 'dark' ? (
-            <LightModeIcon onClick={() => modeChange()}/>
-          ) : (
-            <DarkModeIcon onClick={() => modeChange()}/>
-          )}
-          <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
-            {navItems.map((item) => (
-              <Button key={item[0]} onClick={() => scrollToSection(item[1])} sx={{ color: '#fff' }}>
-                {item[0]}
-              </Button>
-            ))}
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+            <span 
+              onClick={scrollToTop} 
+              style={{ 
+                fontWeight: 800, 
+                fontSize: '1.1rem', 
+                letterSpacing: '-0.03em',
+                cursor: 'pointer',
+                fontFamily: "'Inter', sans-serif",
+              }}
+            >
+              DK<span style={{ color: '#7c3aed' }}>.</span>
+            </span>
+          </Box>
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
+            <Box sx={{ display: { xs: 'none', sm: 'flex' }, gap: 0.25 }}>
+              {navItems.map((item) => (
+                <Button 
+                  key={item[0]} 
+                  onClick={() => scrollToSection(item[1])} 
+                  sx={{ 
+                    color: 'var(--text-primary)',
+                    fontSize: '0.88rem',
+                    fontWeight: 500,
+                    textTransform: 'none',
+                    padding: '6px 14px',
+                    borderRadius: '8px',
+                    fontFamily: "'Inter', sans-serif",
+                    '&:hover': {
+                      background: 'var(--accent-subtle)',
+                      color: 'var(--accent-light)',
+                    }
+                  }}
+                >
+                  {item[0]}
+                </Button>
+              ))}
+            </Box>
+            <IconButton 
+              onClick={() => modeChange()} 
+              sx={{ 
+                color: 'var(--text-secondary)',
+                ml: 0.5,
+                '&:hover': { color: 'var(--accent-light)' }
+              }}
+            >
+              {mode === 'dark' ? <LightModeIcon fontSize="small" /> : <DarkModeIcon fontSize="small" />}
+            </IconButton>
           </Box>
         </Toolbar>
       </AppBar>
@@ -107,7 +144,7 @@ function Navigation({parentToChild, modeChange}: any) {
           open={mobileOpen}
           onClose={handleDrawerToggle}
           ModalProps={{
-            keepMounted: true, // Better open performance on mobile.
+            keepMounted: true,
           }}
           sx={{
             display: { xs: 'block', sm: 'none' },

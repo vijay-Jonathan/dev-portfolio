@@ -72,6 +72,7 @@ function Contact() {
     <div id="contact">
       <div className="items-container">
         <div className="contact_wrapper">
+          <span className="section-label">Get in Touch</span>
           <h1>Contact Me</h1>
           <p>Got a project waiting to be realized? Let's collaborate and make it happen!</p>
           <Box

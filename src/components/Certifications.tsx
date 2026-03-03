@@ -32,6 +32,7 @@ function Certifications() {
   return (
     <div id="certifications">
       <div className="items-container">
+        <span className="section-label">Credentials</span>
         <h1>Certifications</h1>
         
         <div className="cert-grid">

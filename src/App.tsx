@@ -32,10 +32,13 @@ function App() {
         <Navigation parentToChild={{mode}} modeChange={handleModeChange}/>
         <FadeIn transitionDuration={700}>
             <Main/>
+            <div className="section-divider" />
             <Expertise/>
+            <div className="section-divider" />
             <Certifications/>
+            <div className="section-divider" />
             <Timeline/>
-            {/* <Project/> */}
+            <div className="section-divider" />
             <Contact/>
         </FadeIn>
         <Footer />

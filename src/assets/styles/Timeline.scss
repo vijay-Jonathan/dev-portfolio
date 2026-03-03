@@ -1,49 +1,76 @@
+/* ─── Timeline Section ─── */
+#history {
+    .items-container {
+        padding: 6rem 10%;
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+
+    h1 {
+        margin-bottom: 8px;
+    }
+}
+
 .vertical-timeline span {
-    color: white;
-    font-family: 'Courier Prime', monospace;
+    color: var(--text-secondary);
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
 }
 
 .vertical-timeline p {
-    color: rgb(39, 40, 34);
+    color: #4a5568;
 }
 
 .vertical-timeline-element p {
-    color: rgb(39, 40, 34);
+    color: #4a5568;
+    font-size: 0.92rem;
+    line-height: 1.6;
 }
 
 .vertical-timeline-element h3 {
-    color: rgb(39, 40, 34);
+    color: #1a202c;
+    font-weight: 700;
+    font-size: 1.1rem;
 }
 
 .vertical-timeline-element h4 {
-    color: rgb(39, 40, 34);
+    color: #4a5568;
+    font-weight: 500;
 }
 
 .vertical-timeline-element-subtitle .company-name {
     font-weight: 600;
-    color: rgb(39, 40, 34);
+    color: #2d3748;
 }
 
 .vertical-timeline-element-subtitle .company-location {
     display: inline-block;
     font-weight: 400;
-    color: #777;
+    color: #718096;
     font-size: 0.9em;
     margin-left: 6px;
 
     &::before {
         content: '·';
         margin-right: 6px;
-        color: #aaa;
+        color: #a0aec0;
     }
 }
 
 .vertical-timeline-element span {
-    color: rgb(39, 40, 34);
+    color: #4a5568;
 }
 
 .vertical-timeline-element .vertical-timeline-element-date {
-    color: white;
+    color: var(--text-secondary);
+    font-family: var(--font-mono);
+    font-size: 0.85rem !important;
+    font-weight: 500;
+}
+
+.vertical-timeline::before {
+    background: linear-gradient(180deg, var(--accent), rgba(124, 58, 237, 0.1)) !important;
+    width: 3px !important;
 }
 
 .svg-inline--fa {
@@ -52,59 +79,78 @@
 
 @media screen and (max-width: 1170px) {
     .vertical-timeline-element .vertical-timeline-element-date {
-        color: rgb(39, 40, 34);
+        color: #718096;
     }
 }
 
-/* Timeline Clickable Elements */
+/* Timeline Cards */
+.vertical-timeline-element-content {
+    border-radius: var(--radius-md) !important;
+    box-shadow: var(--shadow-sm) !important;
+    border: 1px solid rgba(0, 0, 0, 0.04);
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+}
+
 .timeline-clickable {
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .timeline-clickable:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15) !important;
+    transform: translateY(-4px);
+
+    .vertical-timeline-element-content {
+        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1) !important;
+        border-color: rgba(124, 58, 237, 0.15);
+    }
 }
 
 .click-hint {
-    font-size: 0.85em;
-    color: #666 !important;
-    font-style: italic;
-    margin-top: 8px;
-    opacity: 0.8;
+    font-size: 0.78rem;
+    color: var(--accent) !important;
+    font-style: normal;
+    font-weight: 500;
+    margin-top: 12px;
+    opacity: 0.7;
+    font-family: var(--font-mono);
+    transition: opacity 0.2s ease;
+
+    &:hover {
+        opacity: 1;
+    }
 }
 
-/* Popup Modal Styles */
+/* ─── Popup Modal ─── */
 .timeline-popup-overlay {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: rgba(0, 0, 0, 0.6);
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 1000;
-    backdrop-filter: blur(5px);
+    z-index: 10000;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
 }
 
 .timeline-popup-content {
-    background: white;
-    border-radius: 12px;
+    background: #fff;
+    border-radius: var(--radius-lg);
     padding: 0;
-    max-width: 600px;
+    max-width: 640px;
     width: 90%;
     max-height: 80vh;
     overflow-y: auto;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-    animation: popupFadeIn 0.3s ease-out;
+    box-shadow: 0 25px 80px rgba(0, 0, 0, 0.3);
+    animation: popupFadeIn 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 @keyframes popupFadeIn {
     from {
         opacity: 0;
-        transform: scale(0.9) translateY(-20px);
+        transform: scale(0.92) translateY(-20px);
     }
     to {
         opacity: 1;
@@ -113,45 +159,45 @@
 }
 
 .popup-header {
-    background: linear-gradient(135deg, #0d1116, #1a2332, #2d3748) !important;
+    background: linear-gradient(135deg, #0a0a0f, #1a1a2e, #2d1b69) !important;
     color: white !important;
-    padding: 20px 25px;
-    border-radius: 12px 12px 0 0;
+    padding: 24px 28px;
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 2px solid #121213;
+    border-bottom: none;
 }
 
 .popup-body h3 {
-    color: #666 !important;
+    color: #64748b !important;
     margin: 0 0 8px 0;
-    font-size: 1.1em;
+    font-size: 1rem;
     font-weight: 500;
 }
 
 .light-mode .popup-header {
-    background: linear-gradient(135deg, #f8f9fa, #e9ecef, #dee2e6) !important;
-    color: #0d1116 !important;
-    border-bottom: 2px solid #080808;
+    background: linear-gradient(135deg, #f8fafc, #e2e8f0, #cbd5e1) !important;
+    color: #0f172a !important;
 }
 
 .light-mode .popup-body h3 {
-    color: #666 !important;
+    color: #64748b !important;
 }
 
 .light-mode .close-button {
-    color: #0d1116;
+    color: #0f172a;
 }
 
 .light-mode .close-button:hover {
-    background-color: rgba(13, 17, 22, 0.1);
+    background-color: rgba(15, 23, 42, 0.08);
 }
 
 .popup-header h2 {
     margin: 0;
-    font-size: 1.5em;
-    font-weight: 600;
+    font-size: 1.4rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
 }
 
 .close-button {
@@ -162,29 +208,28 @@
     cursor: pointer;
     padding: 5px;
     border-radius: 50%;
-    width: 35px;
-    height: 35px;
+    width: 36px;
+    height: 36px;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: background-color 0.2s ease;
+    transition: all 0.2s ease;
 }
 
 .close-button:hover {
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: rgba(255, 255, 255, 0.15);
 }
 
 .popup-body {
-    padding: 25px;
+    padding: 28px;
 }
 
-
-
 .popup-date {
-    color: #666;
-    font-weight: 500;
+    color: var(--accent);
+    font-weight: 600;
     margin-bottom: 20px;
-    font-size: 0.95em;
+    font-size: 0.88rem;
+    font-family: var(--font-mono);
 }
 
 .popup-description,
@@ -194,16 +239,17 @@
 
 .popup-description h4,
 .popup-detailed-content h4 {
-    color: #333;
-    margin: 0 0 10px 0;
-    font-size: 1.1em;
-    font-weight: 600;
+    color: #1e293b;
+    margin: 0 0 12px 0;
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
 }
 
 .popup-description p,
 .popup-detailed-content p {
-    color: #555;
-    line-height: 1.6;
+    color: #475569;
+    line-height: 1.7;
     margin: 0;
 }
 
@@ -216,38 +262,43 @@
 .popup-detailed-content ul li {
     position: relative;
     padding-left: 20px;
-    margin-bottom: 12px;
-    color: #555;
-    line-height: 1.6;
-    font-size: 0.95em;
+    margin-bottom: 14px;
+    color: #475569;
+    line-height: 1.65;
+    font-size: 0.92rem;
 
     &::before {
-        content: '▸';
+        content: '▹';
         position: absolute;
         left: 0;
-        color: #5000ca;
+        color: var(--accent);
         font-weight: bold;
+        font-size: 1.1em;
     }
 }
 
 .popup-detailed-content ul li strong {
-    color: #1a1a2e;
+    color: #1e293b;
     font-weight: 700;
 }
 
-/* Responsive Design for Popup */
+/* ─── Responsive ─── */
 @media screen and (max-width: 768px) {
+    #history .items-container {
+        padding: 4rem 1.25rem;
+    }
+
     .timeline-popup-content {
         width: 95%;
         max-height: 85vh;
     }
     
     .popup-header {
-        padding: 15px 20px;
+        padding: 18px 20px;
     }
     
     .popup-header h2 {
-        font-size: 1.3em;
+        font-size: 1.2rem;
     }
     
     .popup-body {

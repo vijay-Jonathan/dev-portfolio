@@ -26,13 +26,13 @@ export const timelineData: TimelineData[] = [
   },
   {
     id: '2',
-    title: 'M.S. Information Technology and Management',
+    title: 'M.S. Computer Science',
     subtitle: 'The University of Texas at Dallas',
     date: 'January 2023 – December 2024',
-    description: 'Master of Science in Information Technology and Management from UTD.',
+    description: 'Master of Science in Computer Science from UTD.',
     type: 'education',
     detailedContent: `<ul>
-<li>Master of Science in <strong>Information Technology and Management</strong></li>
+<li>Master of Science in <strong>Computer Science</strong></li>
 <li>Coursework: Cloud Computing, Software Engineering, Database Management, AI/ML, Enterprise Systems</li>
 <li>Hands-on experience through research projects and collaborative development</li>
 </ul>`
