@@ -42,10 +42,58 @@
         margin-block-end: 0px;
     }
 
+    .hero-title {
+        font-size: 1.3em;
+        color: rgba(255, 255, 255, 0.85);
+        font-weight: 500;
+        letter-spacing: 0.5px;
+    }
+
+    .hero-tagline {
+        font-size: 1.05em;
+        color: rgba(255, 255, 255, 0.55);
+        max-width: 560px;
+        line-height: 1.6;
+        margin-top: 12px;
+    }
+
+    .hero-cta {
+        margin-top: 24px;
+        display: flex;
+        gap: 12px;
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 24px;
+            border-radius: 8px;
+            background: #5000ca;
+            color: white;
+            font-size: 0.95em;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.25s ease;
+            border: 1px solid transparent;
+
+            svg {
+                font-size: 1.2em;
+            }
+
+            &:hover {
+                background: #6b21d4;
+                box-shadow: 0 4px 20px rgba(80, 0, 202, 0.4);
+                transform: translateY(-2px);
+                color: white;
+            }
+        }
+    }
+
     h1 {
-        font-size: 5em;
+        font-size: 4em;
         margin-block-start: 0px;
-        margin-block-end: 0px;
+        margin-block-end: 8px;
+        line-height: 1.1;
     }
 }
 

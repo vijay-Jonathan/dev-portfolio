@@ -7,38 +7,57 @@ import '../assets/styles/Expertise.scss';
 
 const labelsFirst = [
     "React",
+    "Node.js",
+    "Angular",
+    "Python",
+    "Django",
+    "FastAPI",
     "TypeScript",
     "JavaScript",
-    "HTML5",
-    "CSS3",
-    "SASS",
-    "Flask",
-    "Python",
+    "Java",
+    "C#",
+    "Go",
+    "GraphQL",
+    "Ruby on Rails",
     "SQL",
-    "PostgreSQL",
-    "Postman"
+    "MySQL",
+    "MongoDB",
+    "REST API"
 ];
 
 const labelsSecond = [
-    "Git",
-    "GitHub Actions",
-    "Docker",
     "AWS",
+    "GCP",
     "Azure",
-    "Linux",
-    "Snowflake",
-    "Pandas",
-    "Selenium",
+    "Docker",
+    "Kubernetes",
+    "Terraform",
+    "Ansible",
+    "Jenkins",
+    "GitLab CI/CD",
+    "ArgoCD",
+    "Helm",
+    "Grafana",
+    "Prometheus",
+    "SonarQube",
+    "Shell Scripting",
+    "Git",
+    "Jira"
 ];
 
 const labelsThird = [
-    "OpenAI",
-    "Groq",
+    "Google Vertex AI",
+    "Gemini",
     "LangChain",
-    "Qdrant",
+    "RAG Pipelines",
+    "Milvus",
+    "NVIDIA Triton",
+    "TensorRT-LLM",
+    "vLLM",
+    "Llama Guard",
+    "BLIP-2",
     "Hugging Face",
-    "LlamaIndex",
-    "Streamlit",
+    "LLM Integrations"
 ];
 
 function Expertise() {
@@ -50,7 +69,7 @@ function Expertise() {
                 <div className="skill">
                     <FontAwesomeIcon icon={faReact} size="3x"/>
                     <h3>Full Stack Web Development</h3>
-                    <p>I have built a diverse array of web applications from scratch using modern technologies such as React and Flask. I have a strong proficiency in the SDLC process and frontend + backend development.</p>
+                    <p>I have designed and developed 30+ full stack applications using modern technologies such as React, Node.js, Django, and GraphQL, serving 500K+ users. I have strong proficiency across the full SDLC from frontend development to backend APIs and database design.</p>
                     <div className="flex-chips">
                         <span className="chip-title">Tech stack:</span>
                         {labelsFirst.map((label, index) => (
@@ -61,8 +80,8 @@ function Expertise() {
 
                 <div className="skill">
                     <FontAwesomeIcon icon={faDocker} size="3x"/>
-                    <h3>DevOps & Automation</h3>
-                    <p>Once the application is built, I help clients set up DevOps testing, CI/CD pipelines, and deployment automation to support the successful Go-Live.</p>
+                    <h3>DevOps & Cloud</h3>
+                    <p>I build and optimize CI/CD pipelines, automate infrastructure provisioning with Terraform, and orchestrate containerized deployments on Kubernetes. Experienced in cloud migrations to AWS, reducing operational costs by 40% and deployment times by 70%.</p>
                     <div className="flex-chips">
                         <span className="chip-title">Tech stack:</span>
                         {labelsSecond.map((label, index) => (
@@ -73,8 +92,8 @@ function Expertise() {
 
                 <div className="skill">
                     <FontAwesomeIcon icon={faPython} size="3x"/>
-                    <h3>GenAI & LLM</h3>
-                    <p>Stay relevant in the market by leveraging the latest AI models in your projects. I have professional experience building enterprise grade GenAI-enabled solutions to empower intelligent decision making.</p>
+                    <h3>AI / ML & GenAI</h3>
+                    <p>I architect production-grade RAG platforms, low-latency LLM serving stacks, and AI safety pipelines for enterprise use. Experienced in building no-code AI workflow builders and multi-modal AI solutions at scale.</p>
                     <div className="flex-chips">
                         <span className="chip-title">Tech stack:</span>
                         {labelsThird.map((label, index) => (

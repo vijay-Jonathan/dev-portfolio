@@ -19,6 +19,25 @@
     color: rgb(39, 40, 34);
 }
 
+.vertical-timeline-element-subtitle .company-name {
+    font-weight: 600;
+    color: rgb(39, 40, 34);
+}
+
+.vertical-timeline-element-subtitle .company-location {
+    display: inline-block;
+    font-weight: 400;
+    color: #777;
+    font-size: 0.9em;
+    margin-left: 6px;
+
+    &::before {
+        content: '·';
+        margin-right: 6px;
+        color: #aaa;
+    }
+}
+
 .vertical-timeline-element span {
     color: rgb(39, 40, 34);
 }
@@ -186,6 +205,34 @@
     color: #555;
     line-height: 1.6;
     margin: 0;
+}
+
+.popup-detailed-content ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.popup-detailed-content ul li {
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 12px;
+    color: #555;
+    line-height: 1.6;
+    font-size: 0.95em;
+
+    &::before {
+        content: '▸';
+        position: absolute;
+        left: 0;
+        color: #5000ca;
+        font-weight: bold;
+    }
+}
+
+.popup-detailed-content ul li strong {
+    color: #1a1a2e;
+    font-weight: 700;
 }
 
 /* Responsive Design for Popup */

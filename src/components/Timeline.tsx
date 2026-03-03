@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import '@fortawesome/free-regular-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBriefcase, faGraduationCap, faUserGraduate, faTimes } from '@fortawesome/free-solid-svg-icons';
+import WorkIcon from '@mui/icons-material/Work';
+import SchoolIcon from '@mui/icons-material/School';
+import CloseIcon from '@mui/icons-material/Close';
 import { VerticalTimeline, VerticalTimelineElement }  from 'react-vertical-timeline-component';
 import 'react-vertical-timeline-component/style.min.css';
 import '../assets/styles/Timeline.scss'
@@ -40,21 +40,19 @@ function Timeline() {
               date={item.date}
               iconStyle={{ 
                 background: item.type === 'education' ? '#6A1B9A' : '#5000ca', 
-                color: 'rgb(39, 40, 34)' 
+                color: '#fff' 
               }}
-              icon={
-                <FontAwesomeIcon 
-                  icon={item.type === 'education' ? 
-                    (item.title.includes('Masters') ? faUserGraduate : faGraduationCap) : 
-                    faBriefcase
-                  } 
-                />
-              }
+              icon={item.type === 'education' ? <SchoolIcon /> : <WorkIcon />}
               onTimelineElementClick={() => handleTimelineClick(item)}
             >
               <div onClick={() => handleTimelineClick(item)}>
                 <h3 className="vertical-timeline-element-title">{item.title}</h3>
-                <h4 className="vertical-timeline-element-subtitle">{item.subtitle}</h4>
+                <h4 className="vertical-timeline-element-subtitle">
+                  <span className="company-name">{item.subtitle.split(',')[0]}</span>
+                  {item.subtitle.includes(',') && (
+                    <span className="company-location">{item.subtitle.substring(item.subtitle.indexOf(',') + 1).trim()}</span>
+                  )}
+                </h4>
                 <p>{item.description}</p>
                 <p className="click-hint">Click for more details</p>
               </div>
@@ -70,19 +68,18 @@ function Timeline() {
             <div className="popup-header">
               <h2>{selectedItem.title}</h2>
               <button className="close-button" onClick={closePopup}>
-                <FontAwesomeIcon icon={faTimes} />
+                <CloseIcon />
               </button>
             </div>
             <div className="popup-body">
               <h3>{selectedItem.subtitle}</h3>
               <p className="popup-date">{selectedItem.date}</p>
               <div className="popup-description">
-                <h4>Overview:</h4>
                 <p>{selectedItem.description}</p>
               </div>
               <div className="popup-detailed-content">
-                <h4>Detailed Information:</h4>
-                <p>{selectedItem.detailedContent}</p>
+                <h4>Key Highlights:</h4>
+                <div dangerouslySetInnerHTML={{ __html: selectedItem.detailedContent }} />
               </div>
             </div>
           </div>
